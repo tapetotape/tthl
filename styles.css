@@ -27,40 +27,27 @@ p {
   opacity: 0.9;
 }
 
-/* Banner viewport: centers the banner both horizontally and vertically within the viewport */
-.site-banner-viewport {
+/* Top banner shown on every page (full-width, centered content) */
+.site-banner-top {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   width: 100%;
-  /* Use a viewport-relative height so the banner sits in the middle of the screen */
-  height: 70vh; /* adjust as desired (60-80vh are common) */
-  min-height: 320px;
-  box-sizing: border-box;
-  padding: 1rem 0;
+  background: #000;
+  padding: 0.5rem 0; /* vertical spacing around the banner */
 }
-
-/* Picture container — center content and allow the image to scale while preserving aspect ratio */
-.site-banner-picture {
-  display: block;
-  margin: 0 auto;
-  max-width: 100%;
-  max-height: 100%;
-}
-
-.site-banner-picture img,
+.site-banner-top img,
 .site-banner-img {
   display: block;
-  max-width: 100%;
-  max-height: 100%;
-  width: auto !important;     /* let the image keep its aspect ratio */
-  height: auto !important;
-  object-fit: contain !important;
+  width: 100%;
+  max-width: 1200px; /* constrain width so it doesn't become too wide on large screens */
+  height: auto;
+  object-fit: contain !important; /* preserve whole image */
   object-position: center !important;
   background-color: #000 !important;
 }
 
-/* Home page smaller banner inside content area to match other pages */
+/* Home page smaller banner inside content area (kept for compatibility) */
 .home-banner {
   display: flex;
   justify-content: center;
