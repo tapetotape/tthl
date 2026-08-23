@@ -2,7 +2,7 @@ html,body {
   height: 100%;
   margin: 0;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  background: linear-gradient(135deg,#0f172a,#0b1220);
+  background: #000000; /* set solid black background for entire site */
   color: #e6eef8;
 }
 .container {
