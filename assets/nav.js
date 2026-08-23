@@ -4,11 +4,21 @@ document.addEventListener('DOMContentLoaded', function() {
   var toggle = nav.querySelector('.nav-toggle');
   if (!toggle) return;
 
-  toggle.addEventListener('click', function() {
+  var toggleHandler = function(e) {
+    // Prevent double-firing for environments where pointer events and click both fire
+    try { e.preventDefault(); } catch (err) {}
     var expanded = toggle.getAttribute('aria-expanded') === 'true';
     toggle.setAttribute('aria-expanded', String(!expanded));
     nav.classList.toggle('open');
-  });
+  };
+
+  if (window.PointerEvent) {
+    toggle.addEventListener('pointerdown', toggleHandler);
+  } else {
+    // touchstart for older mobile browsers, and click as fallback
+    toggle.addEventListener('touchstart', toggleHandler);
+    toggle.addEventListener('click', toggleHandler);
+  }
 
   // Close menu when clicking outside
   document.addEventListener('click', function(e) {

@@ -14,7 +14,7 @@
 
       {% include nav.html %}
 
-      <!-- Inline toggle fallback: ensures the hamburger works even if external nav.js fails to load -->
+      <!-- Inline toggle fallback: ensures the hamburger works even if external nav.js doesn't load -->
       <script>
         (function() {
           try {
@@ -25,31 +25,37 @@
             if (toggle._navInit) return; // already initialized by external script
             toggle._navInit = true;
 
-            function openNav() {
-              nav.classList.add('open');
-              try { toggle.setAttribute('aria-expanded', 'true'); } catch (e) {}
-            }
-            function closeNav() {
-              nav.classList.remove('open');
-              try { toggle.setAttribute('aria-expanded', 'false'); } catch (e) {}
-            }
+            var toggleHandler = function(e) {
+              try { e.preventDefault(); } catch (err) {}
+              if (nav.classList.contains('open')) {
+                nav.classList.remove('open');
+                try { toggle.setAttribute('aria-expanded','false'); } catch (err) {}
+              } else {
+                nav.classList.add('open');
+                try { toggle.setAttribute('aria-expanded','true'); } catch (err) {}
+              }
+            };
 
-            toggle.addEventListener('click', function(e) {
-              if (nav.classList.contains('open')) closeNav(); else openNav();
-            });
+            if (window.PointerEvent) {
+              toggle.addEventListener('pointerdown', toggleHandler);
+            } else {
+              toggle.addEventListener('touchstart', toggleHandler);
+              toggle.addEventListener('click', toggleHandler);
+            }
 
             // Close when clicking outside
             document.addEventListener('click', function(e) {
               if (!nav.classList.contains('open')) return;
               if (nav.contains(e.target)) return;
-              closeNav();
+              nav.classList.remove('open');
+              try { toggle.setAttribute('aria-expanded','false'); } catch (err) {}
             });
 
             // Close on Escape
             document.addEventListener('keydown', function(e) {
               if (e.key === 'Escape' && nav.classList.contains('open')) {
-                closeNav();
-                try { toggle.focus(); } catch (err) {}
+                nav.classList.remove('open');
+                try { toggle.setAttribute('aria-expanded','false'); toggle.focus(); } catch (err) {}
               }
             });
 
@@ -57,9 +63,10 @@
             var links = nav.querySelectorAll('a');
             for (var i = 0; i < links.length; i++) {
               links[i].addEventListener('click', function() {
-                if (nav.classList.contains('open')) closeNav();
+                if (nav.classList.contains('open')) { nav.classList.remove('open'); try { toggle.setAttribute('aria-expanded','false'); } catch(e){} }
               });
             }
+
           } catch (err) {
             // silent fail — fallback shouldn't break the page
             console && console.error && console.error('nav fallback init error', err);
