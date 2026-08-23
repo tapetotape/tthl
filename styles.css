@@ -72,8 +72,8 @@ main, .container, .site-content, .content {
 
 /* Center main page content under the navigation */
 .site-content {
-  max-width: 900px;        /* content column width */
-  margin: 1.5rem auto;     /* center horizontally with vertical spacing */
+  max-width: 900px;        /* content width to match other pages */
+  margin: 1.5rem auto;     /* center horizontally with some vertical spacing */
   padding: 1rem;           /* inner padding */
   box-sizing: border-box;
   text-align: center;      /* center text and inline content */
@@ -131,22 +131,31 @@ header, .site-header, .site-navigation {
 .site-nav .active { font-weight: 700; border-bottom: 2px solid #e6eef8; }
 
 /* Mobile hamburger & responsive nav (JS-enhanced behavior) */
+/* Position the toggle in the upper-right corner and increase its size for better tap targets */
 .nav-toggle {
   display: none; /* shown on small screens via media query */
-  background: none;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 56px;    /* larger hit area */
+  height: 56px;   /* larger hit area */
+  padding: 8px;
+  background: transparent;
   border: none;
   cursor: pointer;
-  padding: 0.5rem;
-  margin: 0.15rem 0.5rem;
-  color: inherit;
+  z-index: 3000;   /* keep on top of other elements */
+  pointer-events: auto;
 }
 
+/* Make the visible hamburger icon about twice as large as before */
 .hamburger {
   display: block;
-  width: 22px;
-  height: 2px;
+  width: 44px;    /* double the previous 22px */
+  height: 3px;    /* slightly thicker for visibility */
   background: #e6eef8;
   position: relative;
+  left: 50%;
+  transform: translateX(-50%);
   transition: background .15s ease;
 }
 .hamburger::before,
@@ -155,12 +164,12 @@ header, .site-header, .site-navigation {
   position: absolute;
   left: 0;
   width: 100%;
-  height: 2px;
+  height: 3px;
   background: #e6eef8;
   transition: transform .18s ease, top .18s ease;
 }
-.hamburger::before { top: -7px; }
-.hamburger::after { top: 7px; }
+.hamburger::before { top: -10px; }
+.hamburger::after { top: 10px; }
 
 /* When open, show X */
 .site-nav.open .hamburger { background: transparent; }
@@ -199,4 +208,16 @@ header, .site-header, .site-navigation {
   .site-banner-viewport { height: 45vh; min-height: 180px; }
   .home-banner img { max-width: 100%; }
   .site-content { padding: 0.75rem; max-width: 92%; }
+}
+
+/* Ensure normal font weight for page content (override upstream bold rules) */
+.site-content,
+.site-content p,
+.site-content h1,
+.site-content h2,
+.site-content h3,
+.site-content ul,
+.site-content ol,
+.site-content table {
+  font-weight: 400 !important;
 }
