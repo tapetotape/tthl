@@ -27,24 +27,37 @@ p {
   opacity: 0.9;
 }
 
-/* Banner: show full image always (no vertical cropping)
-   width:100% + height:auto preserves natural aspect ratio
-   object-fit: contain prevents any part being cropped
-   overflow:visible and resetting parent heights avoid clipping by layout */
-.site-banner-picture,
+/* Banner viewport: centers the banner both horizontally and vertically within the viewport */
+.site-banner-viewport {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  /* Use a viewport-relative height so the banner sits in the middle of the screen */
+  height: 70vh; /* adjust as desired (60-80vh are common) */
+  min-height: 320px;
+  box-sizing: border-box;
+  padding: 1rem 0;
+}
+
+/* Picture container — center content and allow the image to scale while preserving aspect ratio */
+.site-banner-picture {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
 .site-banner-picture img,
-.site-banner,
 .site-banner-img {
-  width: 100% !important;
-  max-width: 100% !important;
-  display: block !important;
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto !important;     /* let the image keep its aspect ratio */
   height: auto !important;
-  max-height: none !important;
   object-fit: contain !important;
   object-position: center !important;
-  overflow: visible !important;
   background-color: #000 !important;
-  margin: 0 auto;
 }
 
 /* Ensure parent containers don't constrain the banner */
@@ -79,4 +92,5 @@ header, .site-header, .site-navigation {
 @media (max-width: 640px) {
   .site-nav ul { gap: 0.5rem; padding: 0 0.5rem; flex-wrap: wrap; }
   .site-nav a { padding: 0.35rem 0.6rem; }
+  .site-banner-viewport { height: 45vh; min-height: 180px; }
 }

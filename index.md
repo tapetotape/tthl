@@ -3,9 +3,11 @@ layout: home
 title: "Tapetotape"
 ---
 
-<picture class="site-banner-picture">
-  <img src="{{ '/assets/banner.png' | relative_url }}" alt="Tape-to-Tape Hockey League banner" class="site-banner-img">
-</picture>
+<div class="site-banner-viewport">
+  <picture class="site-banner-picture">
+    <img src="{{ '/assets/banner.png' | relative_url }}" alt="Tape-to-Tape Hockey League banner" class="site-banner-img">
+  </picture>
+</div>
 
 {% include nav.html %}
 
