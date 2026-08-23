@@ -3,27 +3,32 @@ layout: home
 title: "Tapetotape"
 ---
 
+<picture class="site-banner-picture">
+  <source type="image/png"
+          srcset="https://raw.githubusercontent.com/tapetotape/tthl/main/ChatGPT%20Image%20Aug%2023%2C%202026%2C%2001_55_44%20PM.png"
+          sizes="100vw">
+  <img src="https://raw.githubusercontent.com/tapetotape/tthl/main/ChatGPT%20Image%20Aug%2023%2C%202026%2C%2001_55_44%20PM.png" alt="Tape-to-Tape Hockey League banner"
+       class="site-banner-img">
+</picture>
+
 <style>
-.site-banner{
+.site-banner-picture,
+.site-banner-picture img {
   width: 100%;
-  height: 320px;
-  background-image: url('/assets/banner.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   display: block;
+  object-fit: cover;        /* crop while preserving aspect */
+  object-position: center;  /* keep center of the image visible */
+  height: 38vh;             /* responsive height in viewport units */
+  min-height: 200px;        /* avoid too-small banner on phones */
+  max-height: 720px;        /* cap on very tall screens */
 }
-
 @media (min-width: 768px) {
-  .site-banner { height: 420px; }
+  .site-banner-picture img { height: 40vh; min-height: 320px; }
 }
-
 @media (min-width: 1200px) {
-  .site-banner { height: 520px; }
+  .site-banner-picture img { height: 48vh; min-height: 420px; }
 }
 </style>
-
-<div class="site-banner" role="img" aria-label="Tape-to-Tape Hockey League banner"></div>
 
 # Coming Soon
 
