@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     nav.classList.toggle('open');
   });
 
-  // Close menu when clicking outside or on a nav link
+  // Close menu when clicking outside
   document.addEventListener('click', function(e) {
     if (!nav.classList.contains('open')) return;
     if (nav.contains(e.target)) return; // click inside nav
@@ -18,9 +18,18 @@ document.addEventListener('DOMContentLoaded', function() {
     toggle.setAttribute('aria-expanded', 'false');
   });
 
+  // Close on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && nav.classList.contains('open')) {
+      nav.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.focus();
+    }
+  });
+
+  // Collapse after selecting a link on mobile
   nav.querySelectorAll('a').forEach(function(link) {
     link.addEventListener('click', function() {
-      // collapse menu after selecting a link on mobile
       if (nav.classList.contains('open')) {
         nav.classList.remove('open');
         toggle.setAttribute('aria-expanded', 'false');
