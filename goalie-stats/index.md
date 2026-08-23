@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Goalie Stats"
+title: "TTHL | Tape to Tape Hockey League"
 permalink: /goalie-stats/
 ---
 
