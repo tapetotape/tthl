@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Schedule"
+title: "TTHL | Tape to Tape Hockey League"
 permalink: /schedule/
 ---
 
