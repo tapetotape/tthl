@@ -4,7 +4,7 @@ title: "Tapetotape"
 ---
 
 <picture class="site-banner-picture">
-  <img src="{{ '/assets/banner.png' | relative_url }}" alt="Tape-to-Tape Hockey League banner" class="site-banner-img">
+  <img src="{{ 'tthl/assets/banner.png' | relative_url }}" alt="Tape-to-Tape Hockey League banner" class="site-banner-img">
 </picture>
 
 {% include nav.html %}
