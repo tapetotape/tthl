@@ -2,9 +2,11 @@ html,body {
   height: 100%;
   margin: 0;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  background: #000000; /* set solid black background for entire site */
+  background: #000000; /* solid black background for entire site */
   color: #e6eef8;
 }
+
+/* Layout basics */
 .container {
   min-height: 100%;
   display: flex;
@@ -14,11 +16,67 @@ html,body {
   text-align: center;
   padding: 2rem;
 }
+
 h1 {
   font-size: 3rem;
   margin: 0 0 0.5rem;
 }
+
 p {
   margin: 0;
   opacity: 0.9;
+}
+
+/* Banner: show full image always (no vertical cropping)
+   width:100% + height:auto preserves natural aspect ratio
+   object-fit: contain prevents any part being cropped
+   overflow:visible and resetting parent heights avoid clipping by layout */
+.site-banner-picture,
+.site-banner-picture img,
+.site-banner,
+.site-banner-img {
+  width: 100% !important;
+  max-width: 100% !important;
+  display: block !important;
+  height: auto !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  overflow: visible !important;
+  background-color: #000 !important;
+  margin: 0 auto;
+}
+
+/* Ensure parent containers don't constrain the banner */
+main, .container, .site-content, .content {
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+/* Prevent header/navigation from overlapping the banner */
+header, .site-header, .site-navigation {
+  position: relative !important;
+  z-index: 1000;
+  background: transparent !important;
+}
+
+/* Navigation styles — appears directly under the banner */
+.site-nav {
+  display: block;
+  width: 100%;
+  background: rgba(255,255,255,0.02);
+  padding: 0.4rem 0;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.02) inset;
+}
+.site-nav ul { list-style: none; margin: 0 auto; padding: 0; display: flex; gap: 1rem; justify-content: center; align-items: center; }
+.site-nav a { color: #e6eef8; text-decoration: none; padding: 0.4rem 0.75rem; border-radius: 4px; display: inline-block; }
+.site-nav a:hover { background: rgba(255,255,255,0.04); }
+.site-nav .active { font-weight: 700; border-bottom: 2px solid #e6eef8; }
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .site-nav ul { gap: 0.5rem; padding: 0 0.5rem; flex-wrap: wrap; }
+  .site-nav a { padding: 0.35rem 0.6rem; }
 }
