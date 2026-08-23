@@ -4,28 +4,29 @@ title: "Tapetotape"
 ---
 
 <style>
-/* Responsive banner: full-width, preserve aspect ratio, fallback for Pages baseurl */
+/* Show the full banner image (no vertical cropping). Uses Jekyll relative_url to handle baseurl. */
 .site-banner-picture,
 .site-banner-picture img,
 .site-banner-img {
   width: 100% !important;
   display: block !important;
-  height: auto !important;
+  height: auto !important;           /* preserve natural aspect ratio */
   max-height: none !important;
-  object-fit: contain !important; /* show whole image */
+  object-fit: contain !important;    /* show whole image, no cropping */
   object-position: center !important;
+  overflow: visible !important;
   background-color: #000 !important;
   margin: 0 auto;
 }
 
-/* If the site is served from a baseurl (e.g., /tthl/), use relative path fallback */
+/* Use relative_url to handle GitHub Pages baseurl */
 .site-banner-picture img {
-  content: url('/assets/banner.png');
+  content: url('{{ '/assets/banner.png' | relative_url }}');
 }
 </style>
 
 <picture class="site-banner-picture">
-  <img src="/assets/banner.png" alt="Tape-to-Tape Hockey League banner" class="site-banner-img">
+  <img src="{{ '/assets/banner.png' | relative_url }}" alt="Tape-to-Tape Hockey League banner" class="site-banner-img">
 </picture>
 
 # Coming Soon
