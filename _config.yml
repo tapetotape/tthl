@@ -1,0 +1,8 @@
+title: Tapetotape
+description: "Tapetotape Hockey League — coming soon. Stay tuned."
+baseurl: ""
+url: "https://tapetotape.github.io/tthl"
+remote_theme: pages-themes/tactile
+plugins:
+  - jekyll-remote-theme
+markdown: kramdown
