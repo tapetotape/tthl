@@ -60,6 +60,21 @@ p {
   background-color: #000 !important;
 }
 
+/* Home page smaller banner inside content area to match other pages */
+.home-banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 1.5rem 0 2rem 0;
+}
+.home-banner img {
+  max-width: 800px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
 /* Ensure parent containers don't constrain the banner */
 main, .container, .site-content, .content {
   height: auto !important;
@@ -93,4 +108,5 @@ header, .site-header, .site-navigation {
   .site-nav ul { gap: 0.5rem; padding: 0 0.5rem; flex-wrap: wrap; }
   .site-nav a { padding: 0.35rem 0.6rem; }
   .site-banner-viewport { height: 45vh; min-height: 180px; }
+  .home-banner img { max-width: 100%; }
 }

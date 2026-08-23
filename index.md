@@ -1,15 +1,13 @@
 ---
-layout: home
+layout: default
 title: "Tapetotape"
 ---
 
-<div class="site-banner-viewport">
-  <picture class="site-banner-picture">
-    <img src="{{ '/assets/banner.png' | relative_url }}" alt="Tape-to-Tape Hockey League banner" class="site-banner-img">
-  </picture>
-</div>
-
 {% include nav.html %}
+
+<div class="home-banner">
+  <img src="{{ '/assets/banner.png' | relative_url }}" alt="Tape-to-Tape Hockey League banner" class="site-banner-img">
+</div>
 
 # Coming Soon
 
