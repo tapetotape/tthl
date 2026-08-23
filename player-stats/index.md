@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Player Stats"
+title: "TTHL | Tape to Tape Hockey League"
 permalink: /player-stats/
 ---
 
