@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
     toggle.addEventListener('pointerdown', toggleHandler);
   } else {
     // touchstart for older mobile browsers, and click as fallback
-    toggle.addEventListener('touchstart', toggleHandler);
+    toggle.addEventListener('touchstart', toggleHandler, {passive:false});
     toggle.addEventListener('click', toggleHandler);
   }
 
@@ -47,3 +47,32 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+
+// Delegated capture listener: robust fallback that catches pointer/touch events
+(function() {
+  function delegatedToggle(e) {
+    try {
+      var btn = e.target && e.target.closest ? e.target.closest('.nav-toggle') : null;
+      if (!btn) return;
+      // If the primary handler already ran on this button, avoid double-toggle
+      // We'll check a short-lived flag on the event target
+      if (e._navHandled) return;
+      e._navHandled = true;
+      try { e.preventDefault(); } catch (err) {}
+      var nav = btn.closest('.site-nav');
+      if (!nav) return;
+      var isOpen = nav.classList.toggle('open');
+      try { btn.setAttribute('aria-expanded', String(isOpen)); } catch (err) {}
+    } catch (err) {
+      // ignore
+      console && console.error && console.error('delegatedToggle error', err);
+    }
+  }
+
+  if (window.PointerEvent) {
+    document.addEventListener('pointerdown', delegatedToggle, true);
+  } else {
+    document.addEventListener('touchstart', delegatedToggle, true);
+    document.addEventListener('click', delegatedToggle, true);
+  }
+})();
