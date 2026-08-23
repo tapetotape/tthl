@@ -4,18 +4,23 @@ title: "Tapetotape"
 ---
 
 <style>
-/* Ensure the banner image is shown in full (no vertical cropping)
-   Use height:auto so the image preserves aspect ratio and is not cut off.
-   The !important flags override any theme CSS that sets vh-based heights. */
+/* Responsive banner: full-width, preserve aspect ratio, fallback for Pages baseurl */
 .site-banner-picture,
-.site-banner-picture img {
+.site-banner-picture img,
+.site-banner-img {
   width: 100% !important;
-  max-width: 100% !important;
   display: block !important;
   height: auto !important;
-  object-fit: none !important;
+  max-height: none !important;
+  object-fit: contain !important; /* show whole image */
   object-position: center !important;
-  background-color: #000;
+  background-color: #000 !important;
+  margin: 0 auto;
+}
+
+/* If the site is served from a baseurl (e.g., /tthl/), use relative path fallback */
+.site-banner-picture img {
+  content: url('/assets/banner.png');
 }
 </style>
 
