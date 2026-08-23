@@ -6,4 +6,4 @@ permalink: /goalie-stats/
 
 # Goalie Stats
 
-Placeholder page for goalie statistics. Replace with your stats tables.
+Goalie Stats will be listed here.
