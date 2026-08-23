@@ -70,6 +70,31 @@ main, .container, .site-content, .content {
   overflow: visible !important;
 }
 
+/* Center main page content under the navigation */
+.site-content {
+  max-width: 900px;        /* content column width */
+  margin: 1.5rem auto;     /* center horizontally with vertical spacing */
+  padding: 1rem;           /* inner padding */
+  box-sizing: border-box;
+  text-align: center;      /* center text and inline content */
+}
+
+/* Ensure common block-level content is centered within the content area */
+.site-content > * {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Explicitly center headings, paragraphs, lists and tables inside the content area */
+.site-content h1,
+.site-content h2,
+.site-content p,
+.site-content ul,
+.site-content ol,
+.site-content table {
+  text-align: center;
+}
+
 /* Prevent header/navigation from overlapping the banner */
 header, .site-header, .site-navigation {
   position: relative !important;
@@ -106,9 +131,16 @@ header, .site-header, .site-navigation {
 .site-nav .active { font-weight: 700; border-bottom: 2px solid #e6eef8; }
 
 /* Responsive adjustments */
+@media (max-width: 1024px) {
+  .site-content { max-width: 800px; }
+}
+@media (max-width: 768px) {
+  .site-content { max-width: 680px; padding: 0.85rem; }
+}
 @media (max-width: 640px) {
   .site-nav ul { gap: 0.5rem; padding: 0 0.5rem; flex-wrap: nowrap; }
   .site-nav a { padding: 0.35rem 0.6rem; }
   .site-banner-viewport { height: 45vh; min-height: 180px; }
   .home-banner img { max-width: 100%; }
+  .site-content { padding: 0.75rem; max-width: 92%; }
 }
