@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Recent Games"
+title: "TTHL | Tape to Tape Hockey League"
 permalink: /recent-games/
 ---
 
