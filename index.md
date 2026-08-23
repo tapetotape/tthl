@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Tapetotape"
+title: "TTHL | Tape to Tape Hockey League"
 ---
 
 # Coming Soon
