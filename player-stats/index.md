@@ -6,4 +6,4 @@ permalink: /player-stats/
 
 # Player Stats
 
-Placeholder page for player statistics. Add tables, CSV imports, or embedded charts here.
+Player Stats will be listed here.
