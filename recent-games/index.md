@@ -6,4 +6,4 @@ permalink: /recent-games/
 
 # Recent Games
 
-Placeholder list of recent game results. Replace with your game results and links to recaps.
+Recent Games will be listed here.
