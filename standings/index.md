@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Standings"
+title: "TTHL | Tape to Tape Hockey League"
 permalink: /standings/
 ---
 
