@@ -1,31 +1,114 @@
-/* Force single-column page content and full-width blocks */
-.site-content {
-  -webkit-column-count: 1 !important;
-  -moz-column-count: 1 !important;
-  column-count: 1 !important;
-  -webkit-column-gap: normal !important;
-  -moz-column-gap: normal !important;
-  column-gap: normal !important;
-
-  display: block !important;
-  width: 100% !important;
-  max-width: 900px !important;   /* keeps your centered reading width */
-  margin: 1.5rem auto !important;
-  box-sizing: border-box;
+html,body {
+  height: 100%;
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: #000000; /* solid black background for entire site */
+  color: #e6eef8;
 }
 
-/* Ensure every direct child is full-width (prevents side-by-side blocks) */
-.site-content > * {
-  display: block !important;
-  width: 100% !important;
-  box-sizing: border-box;
+/* Layout basics */
+.container {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
 }
 
-/* Keep text centered as before */
-.site-content,
-.site-content p,
-.site-content h1,
-.site-content h2 {
-  text-align: center !important;
-  font-weight: 400 !important;
+h1 {
+  font-size: 3rem;
+  margin: 0 0 0.5rem;
+}
+
+p {
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* Top banner shown on every page (full-width, centered content) */
+.site-banner-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background: #000;
+  padding: 0.5rem 0; /* vertical spacing around the banner */
+}
+.site-banner-top img,
+.site-banner-img {
+  display: block;
+  width: 100%;
+  max-width: 1200px; /* constrain width so it doesn't become too wide on large screens */
+  height: auto;
+  object-fit: contain !important; /* preserve whole image */
+  object-position: center !important;
+  background-color: #000 !important;
+}
+
+/* Home page smaller banner inside content area (kept for compatibility) */
+.home-banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 1.5rem 0 2rem 0;
+}
+.home-banner img {
+  max-width: 800px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Ensure parent containers don't constrain the banner */
+main, .container, .site-content, .content {
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+/* Prevent header/navigation from overlapping the banner */
+header, .site-header, .site-navigation {
+  position: relative !important;
+  z-index: 1000;
+  background: transparent !important;
+}
+
+/* Navigation styles — appears directly under the banner */
+.site-nav {
+  display: block;
+  width: 100%;
+  background: rgba(255,255,255,0.02);
+  padding: 0.4rem 0;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.02) inset;
+}
+/* Make nav items display in a single line left-to-right and add separators */
+.site-nav ul {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  justify-content: center; /* keeps nav centered; change to flex-start for left alignment */
+  align-items: center;
+  white-space: nowrap; /* prevent wrapping */
+}
+.site-nav li { display: inline-block; }
+.site-nav li:not(:last-child)::after {
+  content: " | ";
+  color: #e6eef8;
+  padding: 0 0.25rem;
+}
+.site-nav a { color: #e6eef8; text-decoration: none; padding: 0.4rem 0.75rem; border-radius: 4px; display: inline-block; }
+.site-nav a:hover { background: rgba(255,255,255,0.04); }
+.site-nav .active { font-weight: 700; border-bottom: 2px solid #e6eef8; }
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .site-nav ul { gap: 0.5rem; padding: 0 0.5rem; flex-wrap: nowrap; }
+  .site-nav a { padding: 0.35rem 0.6rem; }
+  .site-banner-viewport { height: 45vh; min-height: 180px; }
+  .home-banner img { max-width: 100%; }
 }
