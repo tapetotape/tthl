@@ -10,4 +10,7 @@ Our league is built around **competitive hockey, integrity, sportsmanship, fair 
 
 Season 1 will be starting up soon - **Join the Discord** below and stay up to date as we release more information.
 
+
+
+
 <iframe src="https://discord.com/widget?id=1526011038191980754&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
